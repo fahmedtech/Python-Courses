@@ -1,0 +1,8 @@
+The Length of this file
+will be returned by the 
+program.
+
+Python CSC242
+Midterm
+
+Faizan Ahmed

@@ -1,0 +1,361 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<!-- saved from url=(0067)http://reed.cs.depaul.edu/lperkovic/csc242/homeworks/Homework4.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    
+    <meta name="GENERATOR" content="Mozilla/4.75 [en] (X11; U; Linux
+      2.2.14-5.0 i686) [Netscape]">
+    <meta name="author" content="Ljubomir Perkovic">
+    <title>Introduction to Computer Science II</title>
+    <!--<base target="_top">--><base href="." target="_top">
+    
+  <style type="text/css"></style></head>
+  <body style="background-color: rgb(255, 255, 255);">
+    <h1>&nbsp;</h1>
+    <h1 style="text-align: center;">Introduction to Computer Science II<br>
+    </h1>
+    <center>
+      <h2>&nbsp; Lab and Homework 4<br>
+      </h2>
+    </center>
+    <center>
+      <h3>Due by 1:30pm on Tuesday, February 4<br>
+      </h3>
+    </center>
+    <center>
+      <h3>
+        <hr></h3>
+    </center>
+    <h3>Reading<br>
+    </h3>
+    Read sections 8.1 through 8.6 of the textbook.<br>
+    <br>
+    <h3>Problems</h3>
+    <span style="font-weight: bold;">Implement the below functions in </span><a href="http://reed.cs.depaul.edu/lperkovic/csc242/homeworks/homework4.py">homework4.py</a><span style="font-weight:
+      bold;"> and submit through COL.</span><span style="font-weight:
+      bold;"><br>
+    </span><br>
+    <b>0.</b>&nbsp;&nbsp;&nbsp; Lab attendance is required and
+    constitutes 20% of the lab grade.<br>
+    <span style="font-weight: bold;"><br>
+      <br>
+    </span><span style="font-weight: bold;">1.</span>&nbsp;&nbsp;&nbsp;
+    <span style="font-weight: bold;"></span>In Problem 4 of Homework 2,
+    there are some problems with the implementation of the class <span style="font-family: monospace;">BankAccount</span> and they are
+    illustrated here:<br>
+    <br>
+    <div style="margin-left: 40px;"><span style="font-family:
+        monospace;">&gt;&gt;&gt; x = BankAccount(-700) </span><br>
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.balance() </span><br>
+      <span style="font-family: monospace;">-700 </span><br>
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.withdraw(70)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.balance() </span><br>
+      <span style="font-family: monospace;">-770 &gt;&gt;&gt; </span><br>
+      <span style="font-family: monospace;">x.deposit(-7) </span><br>
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.balance() </span><br>
+      <span style="font-family: monospace;">Balance: -777</span><br>
+    </div>
+    <br>
+    The problems are: 1) a bank account with a negative balance can be
+    created, 2) a withdrawal amount greater than the balance is allowed,
+    and 3) the deposit amount can be negative. Modify the code for the <span style="font-family: monospace;">BankAccount</span> class so that a
+    ValueError exception is thrown for any of these violations, together
+    with an appropriate message: ’Illegal balance’, ’Overdraft’, or
+    ’Negative deposit’.<br>
+    <br>
+    <div style="margin-left: 40px;">Usage:<br>
+      <span style="font-family: monospace;">&gt;&gt;&gt; x =
+        BankAccount2(-700) </span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">Traceback (most recent call
+        last): </span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">... </span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">ValueError: Illegal balance</span><br>
+    </div>
+    <br>
+    <br>
+    <span style="font-weight: bold;">2.</span>&nbsp;&nbsp;&nbsp; In the
+    previous problem, a generic <span style="font-family: monospace;">ValueError</span>
+    exception is raised if any of the three violations occur. It would
+    be more useful if a more specific, user-defined exception is raised
+    instead. Define new exception classes <span style="font-family:
+      monospace;">NegativeBalanceError</span>, <span style="font-family: monospace;">OverdraftError</span>, and <span style="font-family: monospace;">DepositError</span> that would be
+    raised instead. In addition, the informal string representation of
+    the exception object should contain the balance that would result
+    from the negative balance account creation or the overdraft, or the
+    negative deposit. Finally, re-implement the class <span style="font-family: monospace;">BankAccount</span> to use these
+    new exception classes instead of <span style="font-family:
+      monospace;">ValueError</span>.<br>
+    <br style="font-family: monospace;">
+    <div style="margin-left: 40px;">Usage:<span style="font-family:
+        monospace;"></span><br>
+      <span style="font-family: monospace;">&gt;&gt;&gt; x =
+        BankAccount3(-5) </span><br>
+      <span style="font-family: monospace;">Traceback (most recent call
+        last): </span><br>
+      <span style="font-family: monospace;">... </span><br>
+      <span style="font-family: monospace;">NegativeBalanceError:
+        Account created with negative balance -5 </span><br>
+      <span style="font-family: monospace;">&gt;&gt;&gt; x =
+        BankAccount3(5) </span><br>
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.withdraw(7) </span><br>
+      <span style="font-family: monospace;">Traceback (most recent call
+        last): </span><br>
+      <span style="font-family: monospace;">... </span><br>
+      <span style="font-family: monospace;">OverdraftError: Operation
+        would result in negative balance -2 </span><br>
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.deposit(-3) </span><br>
+      <span style="font-family: monospace;">Traceback (most recent call
+        last): </span><br>
+      <span style="font-family: monospace;">... </span><br>
+      <span style="font-family: monospace;">DepositError: Negative
+        deposit -3</span><br>
+    </div>
+    <br>
+    <br>
+    <span style="font-weight: bold;">3.</span>&nbsp;&nbsp;&nbsp;
+    Implement class <span style="font-family: monospace;">BankAccount4</span>
+    as a subclass of <span style="font-family: monospace;">BankAccount3</span>.
+    The class <span style="font-family: monospace;">BankAccount4</span>
+    will inherit all attributes of <span style="font-family:
+      monospace;">BankAcount3</span>, override the constructor so it
+    takes an interest rate in addition to the (optional) starting
+    balance, and have an additional method, <span style="font-family:
+      monospace;">addInterest()</span>, that adds the interest to the
+    balance.<br>
+    <br>
+    <div style="margin-left: 40px;">Usage:<br>
+      <span style="font-family: monospace;">&gt;&gt;&gt; x =
+        BankAccount4(4.5,100)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.balance()</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">100</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.addInterest()</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.balance()</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">104.5</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.addInterest()</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.balance()</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">109.20249999999999</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.addInterest()</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.balance()</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">114.11661249999997</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.addInterest()</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.balance()</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">119.25186006249996</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.addInterest()</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; x.balance()</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">124.61819376531244</span><br>
+    </div>
+    <br>
+    <br>
+    <b>4.</b>&nbsp;&nbsp;&nbsp; Develop a class <tt>Textfile</tt> that
+    provides methods to analyze a text file. The class <tt>Textfile</tt>
+    will support a constructor that takes as input a file name (as a
+    string) and instantiates a <tt>Textfile</tt> object associated with
+    the corresponding text file. The Textfile class should support
+    methods <tt>nchars</tt>, <tt>nwords</tt>, and <tt>nlines</tt>
+    that <b> return</b> the number of characters (inluding punctuation,
+    blanks, etc), words (defined as contiguous non-blank characters
+    separated by blank characters), and lines (defined as contiguous
+    characters separated by new line charaters), respectively, in the
+    associated text file. The class should also support methods <tt>
+      read</tt> and <tt>readlines</tt> that <b>return</b> the content
+    of the text file as a string or as a list of lines, respectively,
+    just as we would expect for file objects. The class should support
+    method <tt>grep</tt> that takes a target string as input and
+    searches for lines in the text file that contain the target string.
+    The method <b>prints</b> the lines in the file containing the
+    target string; in addition, the method should print the line number,
+    where line numbering starts with 0. Finally, the class should
+    support method <tt>occurrences</tt> that takes no input and <tt>returns</tt>
+    a dictionary mapping each word in the file (the key) to the number
+    of times it occurs in the file (the value).<br>
+    <br>
+    &nbsp;You may test your program using <a href="http://reed.cs.depaul.edu/lperkovic/csc242/homeworks/raven.txt">raven.txt</a>.<br>
+    <br>
+    <blockquote>Usage:<br>
+      <tt>&gt;&gt;&gt; t = Textfile('raven.txt')</tt><br>
+      <tt>&gt;&gt;&gt; t.nchars()</tt><br>
+      <tt>6299</tt><br>
+      <tt>&gt;&gt;&gt; t.nwords()</tt><br>
+      <tt>1125</tt><br>
+      <tt>&gt;&gt;&gt; t.nlines()</tt><br>
+      <tt>126</tt><br>
+      <tt>&gt;&gt;&gt; print(t.read())</tt><br>
+      <tt>Once upon a midnight dreary, while I pondered weak and weary,</tt><br>
+      <tt>Over many a quaint and curious volume of forgotten lore,</tt><br>
+      <tt>While I nodded, nearly napping, suddenly there came a tapping,</tt><br>
+      <tt>As of some one gently rapping, rapping at my chamber door.</tt><br>
+      <tt>`'Tis some visitor,' I muttered, `tapping at my chamber door -</tt><br>
+      <tt>Only this, and nothing more.'</tt><br>
+      <br>
+      <tt>Ah, distinctly I remember it was in the bleak December,</tt><br>
+      <tt>And each separate dying ember wrought its ghost upon the
+        floor.</tt><br>
+      <tt>Eagerly I wished the morrow; - vainly I had sought to borrow</tt><br>
+      <tt>From my books surcease of sorrow - sorrow for the lost Lenore
+        -</tt><br>
+      <tt>For the rare and radiant maiden whom the angels named Lenore -</tt><br>
+      <tt>Nameless here for evermore.</tt><br>
+      <br>
+      <tt>And the silken sad uncertain rustling of each purple curtain</tt><br>
+      <tt>Thrilled me - filled me with fantastic terrors never felt
+        before;</tt><br>
+      <tt>So that now, to still the beating of my heart, I stood
+        repeating</tt><br>
+      <tt>`'Tis some visitor entreating entrance at my chamber door -</tt><br>
+      <tt>Some late visitor entreating entrance at my chamber door; -</tt><br>
+      <tt>This it is, and nothing more,'</tt><br>
+      <br>
+      <tt>Presently my soul grew stronger; hesitating then no longer,</tt><br>
+      <tt>`Sir,' said I, `or Madam, truly your forgiveness I implore;</tt><br>
+      <tt>But the fact is I was napping, and so gently you came rapping,</tt><br>
+      <tt>And so faintly you came tapping, tapping at my chamber door,</tt><br>
+      <tt>That I scarce was sure I heard you' - here I opened wide the
+        door; -</tt><br>
+      <tt>Darkness there, and nothing more.</tt><br>
+      <br>
+      <tt>Deep into that darkness peering, long I stood there wondering,
+        fearing,</tt><br>
+      <tt>Doubting, dreaming dreams no mortal ever dared to dream before</tt><br>
+      <tt>But the silence was unbroken, and the darkness gave no token,</tt><br>
+      <tt>And the only word there spoken was the whispered word,
+        `Lenore!'</tt><br>
+      <tt>This I whispered, and an echo murmured back the word,
+        `Lenore!'</tt><br>
+      <tt>Merely this and nothing more.</tt><br>
+      <br>
+      <tt>Back into the chamber turning, all my soul within me burning,</tt><br>
+      <tt>Soon again I heard a tapping somewhat louder than before.</tt><br>
+      <tt>`Surely,' said I, `surely that is something at my window
+        lattice;</tt><br>
+      <tt>Let me see then, what thereat is, and this mystery explore -</tt><br>
+      <tt>Let my heart be still a moment and this mystery explore; -</tt><br>
+      <tt>'Tis the wind and nothing more!'</tt><br>
+      <br>
+      <tt>Open here I flung the shutter, when, with many a flirt and
+        flutter,</tt><br>
+      <tt>In there stepped a stately raven of the saintly days of yore.</tt><br>
+      <tt>Not the least obeisance made he; not a minute stopped or
+        stayed he;</tt><br>
+      <tt>But, with mien of lord or lady, perched above my chamber door
+        -</tt><br>
+      <tt>Perched upon a bust of Pallas just above my chamber door -</tt><br>
+      <tt>Perched, and sat, and nothing more.</tt><br>
+      <br>
+      <tt>Then this ebony bird beguiling my sad fancy into smiling,</tt><br>
+      <tt>By the grave and stern decorum of the countenance it wore,</tt><br>
+      <tt>`Though thy crest be shorn and shaven, thou,' I said, `art
+        sure no craven.</tt><br>
+      <tt>Ghastly grim and ancient raven wandering from the nightly
+        shore -</tt><br>
+      <tt>Tell me what thy lordly name is on the Night's Plutonian
+        shore!'</tt><br>
+      <tt>Quoth the raven, `Nevermore.'</tt><br>
+      <br>
+      <tt>Much I marvelled this ungainly fowl to hear discourse so
+        plainly,</tt><br>
+      <tt>Though its answer little meaning - little relevancy bore;</tt><br>
+      <tt>For we cannot help agreeing that no living human being</tt><br>
+      <tt>Ever yet was blessed with seeing bird above his chamber door -</tt><br>
+      <tt>Bird or beast above the sculptured bust above his chamber
+        door,</tt><br>
+      <tt>With such name as `Nevermore.'</tt><br>
+      <br>
+      <tt>But the raven, sitting lonely on the placid bust, spoke only,</tt><br>
+      <tt>That one word, as if his soul in that one word he did outpour.</tt><br>
+      <tt>Nothing further then he uttered - not a feather then he
+        fluttered -</tt><br>
+      <tt>Till I scarcely more than muttered `Other friends have flown
+        before -</tt><br>
+      <tt>On the morrow he will leave me, as my hopes have flown
+        before.'</tt><br>
+      <tt>Then the bird said, `Nevermore.'</tt><br>
+      <br>
+      <tt>Startled at the stillness broken by reply so aptly spoken,</tt><br>
+      <tt>`Doubtless,' said I, `what it utters is its only stock and
+        store,</tt><br>
+      <tt>Caught from some unhappy master whom unmerciful disaster</tt><br>
+      <tt>Followed fast and followed faster till his songs one burden
+        bore -</tt><br>
+      <tt>Till the dirges of his hope that melancholy burden bore</tt><br>
+      <tt>Of "Never-nevermore."'</tt><br>
+      <br>
+      <tt>But the raven still beguiling all my sad soul into smiling,</tt><br>
+      <tt>Straight I wheeled a cushioned seat in front of bird and bust
+        and door;</tt><br>
+      <tt>Then, upon the velvet sinking, I betook myself to linking</tt><br>
+      <tt>Fancy unto fancy, thinking what this ominous bird of yore -</tt><br>
+      <tt>What this grim, ungainly, ghastly, gaunt, and ominous bird of
+        yore</tt><br>
+      <tt>Meant in croaking `Nevermore.'</tt><br>
+      <br>
+      <tt>This I sat engaged in guessing, but no syllable expressing</tt><br>
+      <tt>To the fowl whose fiery eyes now burned into my bosom's core;</tt><br>
+      <tt>This and more I sat divining, with my head at ease reclining</tt><br>
+      <tt>On the cushion's velvet lining that the lamp-light gloated
+        o'er,</tt><br>
+      <tt>But whose velvet violet lining with the lamp-light gloating
+        o'er,</tt><br>
+      <tt>She shall press, ah, nevermore!</tt><br>
+      <br>
+      <tt>Then, methought, the air grew denser, perfumed from an unseen
+        censer</tt><br>
+      <tt>Swung by Seraphim whose foot-falls tinkled on the tufted
+        floor.</tt><br>
+      <tt>`Wretch,' I cried, `thy God hath lent thee - by these angels
+        he has sent thee</tt><br>
+      <tt>Respite - respite and nepenthe from thy memories of Lenore!</tt><br>
+      <tt>Quaff, oh quaff this kind nepenthe, and forget this lost
+        Lenore!'</tt><br>
+      <tt>Quoth the raven, `Nevermore.'</tt><br>
+      <br>
+      <tt>`Prophet!' said I, `thing of evil! - prophet still, if bird or
+        devil! -</tt><br>
+      <tt>Whether tempter sent, or whether tempest tossed thee here
+        ashore,</tt><br>
+      <tt>Desolate yet all undaunted, on this desert land enchanted -</tt><br>
+      <tt>On this home by horror haunted - tell me truly, I implore -</tt><br>
+      <tt>Is there - is there balm in Gilead? - tell me - tell me, I
+        implore!'</tt><br>
+      <tt>Quoth the raven, `Nevermore.'</tt><br>
+      <br>
+      <tt>`Prophet!' said I, `thing of evil! - prophet still, if bird or
+        devil!</tt><br>
+      <tt>By that Heaven that bends above us - by that God we both adore
+        -</tt><br>
+      <tt>Tell this soul with sorrow laden if, within the distant
+        Aidenn,</tt><br>
+      <tt>It shall clasp a sainted maiden whom the angels named Lenore -</tt><br>
+      <tt>Clasp a rare and radiant maiden, whom the angels named
+        Lenore?'</tt><br>
+      <tt>Quoth the raven, `Nevermore.'</tt><br>
+      <br>
+      <tt>`Be that word our sign of parting, bird or fiend!' I shrieked
+        upstarting -</tt><br>
+      <tt>`Get thee back into the tempest and the Night's Plutonian
+        shore!</tt><br>
+      <tt>Leave no black plume as a token of that lie thy soul hath
+        spoken!</tt><br>
+      <tt>Leave my loneliness unbroken! - quit the bust above my door!</tt><br>
+      <tt>Take thy beak from out my heart, and take thy form from off my
+        door!'</tt><br>
+      <tt>Quoth the raven, `Nevermore.'</tt><br>
+      <br>
+      <tt>And the raven, never flitting, still is sitting, still is
+        sitting</tt><br>
+      <tt>On the pallid bust of Pallas just above my chamber door;</tt><br>
+      <tt>And his eyes have all the seeming of a demon's that is
+        dreaming,</tt><br>
+      <tt>And the lamp-light o'er him streaming throws his shadow on the
+        floor;</tt><br>
+      <tt>And my soul from out that shadow that lies floating on the
+        floor</tt><br>
+      <tt>Shall be lifted - nevermore!</tt><br>
+      <br>
+      <tt>&gt;&gt;&gt; t.grep('nevermore')</tt><br>
+      <tt>75: Of "Never-nevermore."'</tt><br>
+      <tt>89: She shall press, ah, nevermore!</tt><br>
+      <tt>124: Shall be lifted - nevermore!</tt><br>
+    </blockquote>
+    <br>
+  
+
+</body></html>

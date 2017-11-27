@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<!-- saved from url=(0067)http://reed.cs.depaul.edu/lperkovic/csc242/homeworks/Homework8.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    
+    <meta name="GENERATOR" content="Mozilla/4.75 [en] (X11; U; Linux
+      2.2.14-5.0 i686) [Netscape]">
+    <meta name="author" content="Ljubomir Perkovic">
+    <title>Introduction to Computer Science II</title>
+    <!--<base target="_top">--><base href="." target="_top">
+    
+  <style type="text/css"></style></head>
+  <body style="background-color: rgb(255, 255, 255);">
+    <h1>&nbsp;</h1>
+    <h1 style="text-align: center;">Introduction to Computer Science II<br>
+    </h1>
+    <center>
+      <h2>&nbsp; Lab and Homework 8<br>
+      </h2>
+    </center>
+    <center>
+      <h3>Due by 1:30pm on Tuesday, March 11<br>
+      </h3>
+    </center>
+    <center>
+      <h3>
+        <hr></h3>
+    </center>
+    <h3>Reading<br>
+    </h3>
+    Read chapter 11 of the textbook.<br>
+    <br>
+    <h3>Problems</h3>
+    <span style="font-weight: bold;">Implement the below functions in </span><a href="http://reed.cs.depaul.edu/lperkovic/csc242/homeworks/homework8.py">homework8.py</a><span style="font-weight:
+      bold;"> and submit through COL.</span><span style="font-weight:
+      bold;"><br>
+    </span><span style="font-weight: bold;"><br>
+    </span><br>
+    <b>0.</b>&nbsp;&nbsp;&nbsp; Lab attendance is required and
+    constitutes 20% of the lab grade.<span style="font-weight: bold;"></span><br>
+    <br>
+    <span style="font-weight: bold;"><br>
+      1.&nbsp;</span>&nbsp;&nbsp; Problem 10.19 page 389<br>
+    <br>
+    <br>
+    <b>2.</b>&nbsp;&nbsp;&nbsp; Write a recursive method <span style="font-family: monospace;">binary()</span> that takes a
+    non-negative integer <span style="font-family: monospace;">n</span>
+    and <b>prints</b> the binary representation of integer n.<br>
+    <blockquote> Usage:<br>
+      <span style="font-family: monospace;">&gt;&gt;&gt; binary(0)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">0</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; binary(1)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">1</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; binary(3)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">11</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">&gt;&gt;&gt; binary(9)</span><br style="font-family: monospace;">
+      <span style="font-family: monospace;">1001</span><br>
+    </blockquote>
+    <br>
+    <b>3.</b>&nbsp;&nbsp;&nbsp; Start by implementing a class <tt>ContentParser</tt>
+    that when fed a string containing HTML content simply <b>prints</b>
+    all the text data (i.e. non tags) in the content. Then use this
+    class to implement function <tt>getContent()</tt>, a very
+    rudimentary text web browser, that takes a URL (as a string) as
+    input and prints all the text in the associated web page.<br>
+    <blockquote> Usage:<br>
+      <tt>&gt;&gt;&gt; getContent('http://www.nytimes.com')</tt><br>
+      <tt>The New York Times - Breaking News, World
+        NewsMultimediatry{Typekit.load();}catch(e){}window.Krux||</tt><br>
+      <tt>...<br>
+        ...<br>
+        ...<br>
+      </tt></blockquote>
+    <b><br>
+      <br>
+      4</b><span style="font-weight: bold;">.</span>&nbsp;&nbsp;&nbsp;
+    Write method <span style="font-family: monospace;">emails()</span>
+    that&nbsp;takes an HTML document (as a string) as input and returns
+    a list of <span style="font-style: italic;">email addresses</span>
+    (i.e. strings) appearing in it. You should use a regular expression
+    to find the email addresses in the document.<br>
+    <br>
+    <div style="margin-left: 40px;">Usage<span style="font-family:
+        monospace;">:<br>
+        &gt;&gt;&gt; url =
+        'http://reed.cs.depaul.edu/lperkovic/csc242/test1.html'<br>
+        &gt;&gt;&gt; content = urlopen(url).read().decode()<br>
+        &gt;&gt;&gt; emails(content)<br>
+        []<br>
+        &gt;&gt;&gt; url =
+        'http://reed.cs.depaul.edu/lperkovic/csc242/test2.html'<br>
+        &gt;&gt;&gt; content = urlopen(url).read().decode()<br>
+        &gt;&gt;&gt; emails(content)<br>
+        ['lperkovic@cs.depaul.edu']<br>
+        &gt;&gt;&gt; url = 'http://www.cdm.depaul.edu'<br>
+        &gt;&gt;&gt; content = urlopen(url).read().decode()<br>
+        &gt;&gt;&gt; emails(content)<br>
+        ['admission@cdm.depaul.edu', 'advising@cdm.depaul.edu',
+        'webmaster@cdm.depaul.edu', 'wwwfeedback@cdm.depaul.edu']</span><br>
+    </div>
+    <span style="font-family: monospace;"> <br>
+      <br>
+      <br>
+    </span><span style="font-weight: bold;">5.</span>&nbsp;&nbsp; Write
+    a recursive method <span style="font-family: monospace;">spam(url,
+      n)</span> that takes a url of a web page as input and a
+    non-negative integer n, collects all the email address contained in
+    the web page and adds them to the <span style="font-style: italic;">global
+dictionary
+
+      variable</span> <span style="font-family: monospace;">spam_dict</span>,
+    and then recursively calls itself on every http hyperlink contained
+    in the web page. You will use a dictionary so only one copy of every
+    email address is saved; your dictionary will store (key,value) pairs
+    (email, email). The recursive call should use the argument n-1
+    instead of n. If n = 0, no recursive calls should be made. The
+    parameter n is used to limit the recursion to at most depth n. You
+    will need to use the solution of the previous problem as well as the
+    class Collector in <a href="http://reed.cs.depaul.edu/lperkovic/csc242/lecture9/ch11.py">ch11.py</a>. <br>
+    <br>
+    Notes: <br>
+    <ol type="a">
+      <li>Running <span style="font-family: monospace;">spam()</span>
+        directly will produce no output on the screen; to find your <span style="font-family: monospace;">spam_dict</span>, you will
+        need to read the value of <span style="font-family: monospace;">spam_dict</span>,
+        and you will also need to reset it to the empty dictionary
+        before every run of spam. </li>
+      <li>Recall how global variables are used.</li>
+    </ol>
+    <blockquote> Usage:<span style="font-family: monospace;"></span><span style="font-family: monospace;"></span><br>
+      <span style="font-family: monospace;">&gt;&gt;&gt; url =
+        'http://reed.cs.depaul.edu/lperkovic/csc242/test1.html'<br>
+        &gt;&gt;&gt; spam_dict = {}<br>
+        &gt;&gt;&gt; spam(url, 0)<br>
+        &gt;&gt;&gt; spam_dict<br>
+        {}<br>
+        &gt;&gt;&gt; spam_dict = {}<br>
+        &gt;&gt;&gt; spam(url, 2)<br>
+        &gt;&gt;&gt; spam_dict<br>
+        {'nobody@xyz.com': 'nobody@xyz.com', 'lperkovic@cs.depaul.edu':
+        'lperkovic@cs.depaul.edu'}<br>
+        &gt;&gt;&gt; spam_dict.keys()<br>
+        dict_keys(['nobody@xyz.com', 'lperkovic@cs.depaul.edu'])</span><span style="font-family: monospace;"><br>
+      </span> </blockquote>
+    <br>
+  
+
+</body></html>
